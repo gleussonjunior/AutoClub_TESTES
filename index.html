@@ -36,8 +36,8 @@ header{position:sticky;top:0;z-index:100;height:52px;background:rgba(255,255,255
 .logo-nome{font-size:1.4rem;font-weight:700;letter-spacing:-.4px;}
 .logo-sub{font-size:.55rem;font-weight:300;color:var(--muted);display:block;}
 .header-actions{display:flex;align-items:center;gap:10px;margin-left:auto;}
-.btn-juntar{background:#25D366;color:#fff;border:none;padding:7px 14px;border-radius:99px;font-family:inherit;font-size:.78rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:opacity .15s;cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
-.btn-juntar:hover{opacity:.85;}
+.btn-juntar{background:transparent;color:var(--blue);border:1.5px solid var(--blue);padding:6px 14px;border-radius:99px;font-family:inherit;font-size:.78rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .15s;cursor:pointer;display:inline-flex;align-items:center;}
+.btn-juntar:hover{background:var(--blue);color:#fff;}
 .garagem-select{font-family:inherit;font-size:.84rem;font-weight:500;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:5px 10px;cursor:pointer;outline:none;}
 .profile-wrap{display:none;padding:20px 24px 0;max-width:1200px;margin:0 auto;animation:up .4s ease;}
 .profile-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px 24px;display:flex;flex-direction:column;gap:16px;}
@@ -136,8 +136,7 @@ footer{text-align:center;padding:22px;border-top:1px solid var(--border);font-si
   header,.filters-wrap,.main,.profile-wrap{padding-left:16px;padding-right:16px;}
   .grid,.m-grid{grid-template-columns:1fr;}
   .search-wrap,.search-wrap input{width:130px;}
-  .btn-juntar span{display:none;}
-}
+  .btn-juntar{font-size:.72rem;padding:5px 10px;}}
 </style>
 </head>
 <body>
@@ -149,7 +148,7 @@ footer{text-align:center;padding:22px;border-top:1px solid var(--border);font-si
   </a>
   <div class="header-actions">
     <a href="https://wa.me/5534991396569?text=Ol%C3%A1!%20Quero%20me%20juntar%20ao%20AutoClub%20como%20garajeiro!" target="_blank" class="btn-juntar" id="btn-juntar">
-      🚗 <span>Quero me juntar</span>
+      Junte-se ao nosso club!
     </a>
     <select class="garagem-select" id="sel-garagem" onchange="trocarGaragem(this.value)">
       <option value="">Carregando...</option>
@@ -230,15 +229,15 @@ footer{text-align:center;padding:22px;border-top:1px solid var(--border);font-si
   </div>
 </div>
 
-<footer>AutoClub — <a href="https://wa.me/5534991396569?text=Ol%C3%A1!%20Quero%20me%20juntar%20ao%20AutoClub%20como%20garajeiro!" target="_blank" style="color:var(--blue);text-decoration:none;">Quero ser garajeiro</a></footer>
+<footer>AutoClub — <a href="https://wa.me/5534991396569?text=Ol%C3%A1!%20Quero%20me%20juntar%20ao%20AutoClub%20como%20garajeiro!" target="_blank" style="color:var(--blue);text-decoration:none;">Junte-se ao nosso club!</a></footer>
 
 <script>
 // ============================================================
 // CONFIGURAÇÃO SUPABASE
 // Substitua pelas suas chaves (anon key — somente leitura)
 // ============================================================
-var SUPABASE_URL  = "https://rhrsqyjrcaxxvpcdffss.supabase.co";
-var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJocnNxeWpyY2F4eHZwY2RmZnNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODMzOTcsImV4cCI6MjA5MTE1OTM5N30.5LOpkZzeyG-jcLyNolAjGRyzqXmCrqep15Zyerg2AYI";
+var SUPABASE_URL  = "https://SEU_PROJETO.supabase.co";
+var SUPABASE_ANON = "SUA_CHAVE_ANON_AQUI";
 var BASE_URL      = "https://www.autoclubgaragens.com.br";
 
 // ============================================================
