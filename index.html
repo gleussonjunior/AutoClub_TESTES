@@ -236,8 +236,8 @@ footer{text-align:center;padding:22px;border-top:1px solid var(--border);font-si
 // CONFIGURAÇÃO SUPABASE
 // Substitua pelas suas chaves (anon key — somente leitura)
 // ============================================================
-var SUPABASE_URL  = "https://SEU_PROJETO.supabase.co";
-var SUPABASE_ANON = "SUA_CHAVE_ANON_AQUI";
+var SUPABASE_URL  = "https://rhrsqyjrcaxxvpcdffss.supabase.co";
+var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJocnNxeWpyY2F4eHZwY2RmZnNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODMzOTcsImV4cCI6MjA5MTE1OTM5N30.5LOpkZzeyG-jcLyNolAjGRyzqXmCrqep15Zyerg2AYI";
 var BASE_URL      = "https://www.autoclubgaragens.com.br";
 
 // ============================================================
@@ -257,9 +257,16 @@ function sbFetch(path) {
   return fetch(SUPABASE_URL + "/rest/v1/" + path, {
     headers: {
       "apikey": SUPABASE_ANON,
-      "Authorization": "Bearer " + SUPABASE_ANON
+      "Authorization": "Bearer " + SUPABASE_ANON,
+      "Accept": "application/json"
     }
-  }).then(function(r) { return r.json(); });
+  }).then(function(r) {
+    if (!r.ok) throw new Error("Supabase HTTP " + r.status);
+    return r.json();
+  }).then(function(data) {
+    if (!Array.isArray(data)) throw new Error("Resposta inesperada: " + JSON.stringify(data));
+    return data;
+  });
 }
 
 // ============================================================
@@ -300,7 +307,8 @@ function init() {
     numeroAtual = gAtual ? gAtual.numero : "";
     sel.value   = slugAtual;
 
-    // Ocultar select e botão juntar quando vier via slug (QR Code)
+    // Ocultar select e botão juntar SOMENTE quando a URL já tinha o slug ao carregar a página
+    // Isso cobre QR Code e links diretos — mas não esconde quando o usuário navegou pelo select
     if (viaSlug) {
       sel.style.display = "none";
       document.getElementById("btn-juntar").style.display = "none";
